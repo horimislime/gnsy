@@ -1,15 +1,13 @@
 //
-//  GNSViewController.h
+//  GNSContentProvider.m
 //  gnsy
 //
 //  Created by horimislime on 2014/08/29.
 //  Copyright (c) 2014年 horimislime. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "GNSContentProvider.h"
-#import "GNSContentViewController.h"
 
-@interface GNSViewController : UIViewController
+@implementation GNSContentProvider
 
 @end

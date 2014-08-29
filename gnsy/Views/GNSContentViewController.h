@@ -1,5 +1,5 @@
 //
-//  GNSViewController.h
+//  GNSContentViewController.h
 //  gnsy
 //
 //  Created by horimislime on 2014/08/29.
@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GNSContentProvider.h"
-#import "GNSContentViewController.h"
 
-@interface GNSViewController : UIViewController
+@interface GNSContentViewController : UIViewController
 
 @end

@@ -9,21 +9,26 @@
 #import "GNSViewController.h"
 
 @interface GNSViewController ()
-
+@property (strong, nonatomic) IBOutlet UIView *tabAreaView;
+@property (strong, nonatomic) IBOutlet UIView *borderAreaView;
+@property (strong, nonatomic) IBOutlet UIScrollView *contentAreaView;
 @end
 
 @implementation GNSViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+//    UIPageViewController *pageController = [[UIPageViewController alloc]];
+    GNSContentViewController *contentController = [[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil];
+    [self.contentAreaView addSubview:[[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil].view];
+    [self.contentAreaView addSubview:[[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil].view];
+    [self.contentAreaView setContentSize:CGSizeMake(640, 480)];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  // Dispose of any resources that can be recreated.
 }
 
 @end
