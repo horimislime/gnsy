@@ -7,12 +7,34 @@
 //
 
 #import "GNSContentViewController.h"
+#import "GNSNews.h"
 
 @interface GNSContentViewController ()
 
 @end
 
-@implementation GNSContentViewController
+@implementation GNSContentViewController {
+    NSString *_categoryId;
+    GNSNews *_loader;
+}
+
+- (id)initWithContentInfo:(GNSCategory *)info lazy:(BOOL)lazy {
+    self = [self initWithNibName:@"GNSContentViewController" bundle:nil];
+    if(self){
+        _categoryId = info.categoryId;
+        _loader=[[GNSNews alloc] initWithContentId:_categoryId];
+        _loader.delegate=self;
+        
+        [_loader load];
+    }
+
+    //TODO:
+//    if(!lazy){
+//        
+//    }
+    
+    return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,4 +57,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - GNSContentDelegate
+-(void)contentDidFinishLoad:(NSArray *)contents{
+    
+}
+
+-(void)contentDidFailLoad{
+    
+}
 @end

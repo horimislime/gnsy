@@ -7,6 +7,8 @@
 //
 
 #import "GNSViewController.h"
+#import "GNSContentScrollViewController.h"
+#import "GNSCategory.h"
 
 @interface GNSViewController ()
 @property (strong, nonatomic) IBOutlet UIView *tabAreaView;
@@ -19,16 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    UIPageViewController *pageController = [[UIPageViewController alloc]];
-    GNSContentViewController *contentController = [[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil];
-    [self.contentAreaView addSubview:[[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil].view];
-    [self.contentAreaView addSubview:[[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil].view];
-    [self.contentAreaView setContentSize:CGSizeMake(640, 480)];
+    
+    GNSContentScrollViewController *scrollController=[[GNSContentScrollViewController alloc] initWithNibName:@"GNSContentScrollViewController" bundle:nil];
+                                                      
+    [self.contentAreaView addSubview:scrollController.view];
+    
+    // TODO:カテゴリのロードはviewロード前(スプラッシュのバックグランドとか)でやる
+    [GNSCategory setDelegate:scrollController];
+    [GNSCategory load];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
-
 @end

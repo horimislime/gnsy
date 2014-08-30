@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GNSCategory.h"
 
-@interface GNSContentViewController : UIViewController
-
+@interface GNSContentViewController : UIViewController<GNSContentDelegate>
+- (id)initWithContentInfo:(GNSCategory *)info lazy:(BOOL)lazy;
 @end

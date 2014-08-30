@@ -1,8 +1,8 @@
 //
-//  GNSViewController.h
+//  GNSContentScrollViewController.h
 //  gnsy
 //
-//  Created by horimislime on 2014/08/29.
+//  Created by horimislime on 2014/08/30.
 //  Copyright (c) 2014年 horimislime. All rights reserved.
 //
 
@@ -10,6 +10,5 @@
 #import "GNSContent.h"
 #import "GNSContentViewController.h"
 
-@interface GNSViewController : UIViewController
-
+@interface GNSContentScrollViewController : UIViewController<GNSContentDelegate>
 @end
