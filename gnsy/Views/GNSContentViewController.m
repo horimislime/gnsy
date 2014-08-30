@@ -8,61 +8,83 @@
 
 #import "GNSContentViewController.h"
 #import "GNSNews.h"
+#import "GNSTableViewCell.h"
 
 @interface GNSContentViewController ()
-
+@property(strong, nonatomic) IBOutlet UITableView *contentTableView;
 @end
 
 @implementation GNSContentViewController {
     NSString *_categoryId;
     GNSNews *_loader;
+    NSArray *_contents;
 }
 
 - (id)initWithContentInfo:(GNSCategory *)info lazy:(BOOL)lazy {
     self = [self initWithNibName:@"GNSContentViewController" bundle:nil];
-    if(self){
+    if (self) {
         _categoryId = info.categoryId;
-        _loader=[[GNSNews alloc] initWithContentId:_categoryId];
-        _loader.delegate=self;
+        _loader = [[GNSNews alloc] initWithContentId:_categoryId];
+        _loader.delegate = self;
         
-        [_loader load];
+        [_loader fetchContent];
     }
-
-    //TODO:
-//    if(!lazy){
-//        
-//    }
     
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.contentTableView.delegate=self;
+    self.contentTableView.dataSource=self;
+    
+    [self.contentTableView registerNib:[UINib nibWithNibName:@"GNSTableViewCell" bundle:nil]
+                forCellReuseIdentifier:_categoryId];
+    
 }
 
 #pragma mark - GNSContentDelegate
--(void)contentDidFinishLoad:(NSArray *)contents{
-    
+- (void)contentDidFinishLoad:(NSArray *)contents {
+    _contents=contents;
+    [self.contentTableView reloadData];
 }
 
--(void)contentDidFailLoad{
+- (void)contentDidFailLoad {
+}
+
+#pragma mark - UITableViewDelegate
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120.0;
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _contents.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    GNSTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:_categoryId];
+    GNSNews *news = _contents[indexPath.row];
+    [cell loadContent:news];
     
+    return cell;
 }
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

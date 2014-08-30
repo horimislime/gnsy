@@ -10,5 +10,8 @@
 #import "GNSContent.h"
 #import "GNSContentViewController.h"
 
-@interface GNSContentScrollViewController : UIViewController<GNSContentDelegate>
+@interface GNSContentScrollViewController : UIViewController<
+    GNSContentDelegate,
+    UIScrollViewDelegate
+>
 @end

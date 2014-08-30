@@ -15,5 +15,4 @@
 //@property(weak, nonatomic) id<GNSContentDelegate> delegate;
 @property(strong, nonatomic)NSString *categoryId;
 @property(strong, nonatomic)NSString *categoryTitle;
-
 @end

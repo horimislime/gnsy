@@ -30,35 +30,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.contentScrollView.delegate = self;
+    
     _contentHeight = self.view.frame.size.height;
     _contentWidth = self.view.frame.size.width;
-    
-    [self addPage];
-    [self addPage];
 }
 
-- (void)addPage {
-    GNSContentViewController *controller =[[GNSContentViewController alloc] initWithNibName:@"GNSContentViewController" bundle:nil];
+- (void)addPageView:(GNSCategory *)content {
+    GNSContentViewController *controller =
+    [[GNSContentViewController alloc] initWithContentInfo:content lazy:YES];
+    
     CGRect rect = controller.view.frame;
-    rect.origin.x=_contentWidth*_pageCount;
-    rect.origin.y=self.view.frame.origin.y;
+    rect.origin.x = _contentWidth * _pageCount;
+    rect.origin.y = self.view.frame.origin.y;
     controller.view.frame = rect;
     
     [self.contentScrollView addSubview:controller.view];
     _pageCount++;
     
-    [self.contentScrollView setContentSize:CGSizeMake(_contentWidth*_pageCount, _contentHeight)];
+    [self.contentScrollView
+     setContentSize:CGSizeMake(_contentWidth * _pageCount, _contentHeight)];
 }
 
-# pragma mark - GNSContentDelegate
--(void)contentDidFinishLoad:(NSArray *)contents {
-    //TODO:コンテンツの正当性チェックはrootcontrollerでやりたいので、delegateやめる
-//    for(GNSContent *content:contents){
-//        
-//    }
-    NSLog(@"");
+#pragma mark - GNSContentDelegate
+- (void)contentDidFinishLoad:(NSArray *)contents {
+    // TODO:コンテンツの正当性チェックはrootcontrollerでやりたいので、delegateやめる
+    for (GNSCategory *content in contents) {
+        [self addPageView:content];
+    }
 }
 -(void)contentDidFailLoad {
     
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    int page = scrollView.contentOffset.x/scrollView.contentSize.width;
+    CGFloat scrollPerPage=scrollView.contentOffset.x / _contentWidth;
+    NSLog(@"page=%f",scrollPerPage);
 }
 @end

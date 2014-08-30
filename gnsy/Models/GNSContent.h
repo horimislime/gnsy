@@ -14,5 +14,5 @@
 @end
 
 @interface GNSContent : NSObject
-- (void)load;
++ (void)fetchContent;
 @end

@@ -28,7 +28,7 @@ static id<GNSContentDelegate> _delegate;
     _delegate = delegate;
 }
 
-+ (void)load {
++ (void)fetchContent {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://api.myjson.com/bins/12dbv"
       parameters:nil

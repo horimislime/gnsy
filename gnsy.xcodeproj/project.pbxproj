@@ -28,6 +28,10 @@
 		86C50A4E19B14DDA0062E09B /* GNSContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A4D19B14DDA0062E09B /* GNSContent.m */; };
 		86C50A5119B14F600062E09B /* GNSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A5019B14F600062E09B /* GNSCategory.m */; };
 		86C50A5419B1825C0062E09B /* GNSNews.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A5319B1825C0062E09B /* GNSNews.m */; };
+		86C50A6119B19B9A0062E09B /* GNSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A6019B19B9A0062E09B /* GNSTableViewCell.m */; };
+		86C50A6319B19C3F0062E09B /* GNSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C50A6219B19C3F0062E09B /* GNSTableViewCell.xib */; };
+		86C50A6519B1D6BA0062E09B /* GNSTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C50A6419B1D6BA0062E09B /* GNSTabView.xib */; };
+		86C50A6819B1D8760062E09B /* GNSTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A6719B1D8760062E09B /* GNSTabView.m */; };
 		97A24EEE087D456B9DE2531D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCFB5A346954AFBAA539AEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,12 @@
 		86C50A5019B14F600062E09B /* GNSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSCategory.m; path = Models/GNSCategory.m; sourceTree = "<group>"; };
 		86C50A5219B1825C0062E09B /* GNSNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSNews.h; path = Models/GNSNews.h; sourceTree = "<group>"; };
 		86C50A5319B1825C0062E09B /* GNSNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSNews.m; path = Models/GNSNews.m; sourceTree = "<group>"; };
+		86C50A5F19B19B9A0062E09B /* GNSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSTableViewCell.h; path = Views/GNSTableViewCell.h; sourceTree = "<group>"; };
+		86C50A6019B19B9A0062E09B /* GNSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSTableViewCell.m; path = Views/GNSTableViewCell.m; sourceTree = "<group>"; };
+		86C50A6219B19C3F0062E09B /* GNSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GNSTableViewCell.xib; path = Views/GNSTableViewCell.xib; sourceTree = "<group>"; };
+		86C50A6419B1D6BA0062E09B /* GNSTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GNSTabView.xib; path = Views/GNSTabView.xib; sourceTree = "<group>"; };
+		86C50A6619B1D8760062E09B /* GNSTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSTabView.h; path = Views/GNSTabView.h; sourceTree = "<group>"; };
+		86C50A6719B1D8760062E09B /* GNSTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSTabView.m; path = Views/GNSTabView.m; sourceTree = "<group>"; };
 		AE814411F64946DC93900957 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +198,12 @@
 				86C50A4719B0E51C0062E09B /* GNSContentScrollViewController.h */,
 				86C50A4819B0E51C0062E09B /* GNSContentScrollViewController.m */,
 				86C50A4919B0E51C0062E09B /* GNSContentScrollViewController.xib */,
+				86C50A5F19B19B9A0062E09B /* GNSTableViewCell.h */,
+				86C50A6019B19B9A0062E09B /* GNSTableViewCell.m */,
+				86C50A6219B19C3F0062E09B /* GNSTableViewCell.xib */,
+				86C50A6419B1D6BA0062E09B /* GNSTabView.xib */,
+				86C50A6619B1D8760062E09B /* GNSTabView.h */,
+				86C50A6719B1D8760062E09B /* GNSTabView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -286,6 +302,8 @@
 			files = (
 				86C50A4319B0C5B50062E09B /* GNSContentViewController.xib in Resources */,
 				86C50A1C19B0B0E40062E09B /* Images.xcassets in Resources */,
+				86C50A6519B1D6BA0062E09B /* GNSTabView.xib in Resources */,
+				86C50A6319B19C3F0062E09B /* GNSTableViewCell.xib in Resources */,
 				86C50A4B19B0E51C0062E09B /* GNSContentScrollViewController.xib in Resources */,
 				86C50A0E19B0B0E40062E09B /* InfoPlist.strings in Resources */,
 				86C50A1719B0B0E40062E09B /* Main.storyboard in Resources */,
@@ -340,10 +358,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86C50A6119B19B9A0062E09B /* GNSTableViewCell.m in Sources */,
 				86C50A1019B0B0E40062E09B /* main.m in Sources */,
 				86C50A5419B1825C0062E09B /* GNSNews.m in Sources */,
 				86C50A4A19B0E51C0062E09B /* GNSContentScrollViewController.m in Sources */,
 				86C50A4E19B14DDA0062E09B /* GNSContent.m in Sources */,
+				86C50A6819B1D8760062E09B /* GNSTabView.m in Sources */,
 				86C50A5119B14F600062E09B /* GNSCategory.m in Sources */,
 				86C50A1419B0B0E40062E09B /* GNSAppDelegate.m in Sources */,
 				86C50A1A19B0B0E40062E09B /* GNSViewController.m in Sources */,

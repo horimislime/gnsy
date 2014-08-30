@@ -11,9 +11,9 @@
 @interface GNSNews : GNSContent
 - (id)initWithContentId:(NSString *)contentId;
 - (id)initWithTitle:(NSString *)title picture:(NSString *)picture url:(NSString *)url;
-- (void)load;
+- (void)fetchContent;
 
-@property(weak,nonatomic)id<GNSContentDelegate>delegate;
+@property(strong,nonatomic)id<GNSContentDelegate>delegate;
 
 @property(strong,nonatomic)NSString *newsTitle;
 @property(strong,nonatomic)NSString *newsPicture;

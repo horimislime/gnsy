@@ -33,7 +33,7 @@
     return self;
 }
 
-- (void)load {
+- (void)fetchContent {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:_resourceUrl
       parameters:nil
