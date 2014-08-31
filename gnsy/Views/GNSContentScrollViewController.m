@@ -53,15 +53,11 @@
      setContentSize:CGSizeMake(_contentWidth * _pageCount, _contentHeight)];
 }
 
-#pragma mark - GNSContentDelegate
-- (void)contentDidFinishLoad:(NSArray *)contents {
+- (void)setCategories:(NSArray *)categories {
     // TODO:コンテンツの正当性チェックはrootcontrollerでやりたいので、delegateやめる
-    for (GNSCategory *content in contents) {
-        [self addPageView:content];
+    for (GNSCategory *category in categories) {
+        [self addPageView:category];
     }
-}
--(void)contentDidFailLoad {
-    
 }
 
 #pragma mark - UIScrollViewDelegate

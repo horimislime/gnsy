@@ -14,4 +14,6 @@
     GNSContentDelegate,
     UIScrollViewDelegate
 >
+
+- (void)setCategories:(NSArray *)categories;
 @end

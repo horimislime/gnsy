@@ -53,4 +53,10 @@
   return self;
 }
 
+- (void)setContent:(GNSCategory *)category {
+    GNSTabView *tab=self.subviews[0];
+    tab.tabTitleLabel.text=category.categoryTitle;
+    
+}
+
 @end

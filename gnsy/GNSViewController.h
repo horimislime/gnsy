@@ -10,6 +10,6 @@
 #import "GNSContent.h"
 #import "GNSContentViewController.h"
 
-@interface GNSViewController : UIViewController
+@interface GNSViewController : UIViewController<GNSContentDelegate>
 
 @end

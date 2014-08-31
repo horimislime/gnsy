@@ -32,6 +32,9 @@
 		86C50A6319B19C3F0062E09B /* GNSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C50A6219B19C3F0062E09B /* GNSTableViewCell.xib */; };
 		86C50A6519B1D6BA0062E09B /* GNSTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C50A6419B1D6BA0062E09B /* GNSTabView.xib */; };
 		86C50A6819B1D8760062E09B /* GNSTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A6719B1D8760062E09B /* GNSTabView.m */; };
+		86C50A6C19B204890062E09B /* GNSTabScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A6A19B204890062E09B /* GNSTabScrollViewController.m */; };
+		86C50A6D19B204890062E09B /* GNSTabScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */; };
+		86C50A7119B2CF580062E09B /* GNSColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C50A7019B2CF580062E09B /* GNSColorUtils.m */; };
 		97A24EEE087D456B9DE2531D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCFB5A346954AFBAA539AEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +87,11 @@
 		86C50A6419B1D6BA0062E09B /* GNSTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GNSTabView.xib; path = Views/GNSTabView.xib; sourceTree = "<group>"; };
 		86C50A6619B1D8760062E09B /* GNSTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSTabView.h; path = Views/GNSTabView.h; sourceTree = "<group>"; };
 		86C50A6719B1D8760062E09B /* GNSTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSTabView.m; path = Views/GNSTabView.m; sourceTree = "<group>"; };
+		86C50A6919B204890062E09B /* GNSTabScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSTabScrollViewController.h; path = Views/GNSTabScrollViewController.h; sourceTree = "<group>"; };
+		86C50A6A19B204890062E09B /* GNSTabScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSTabScrollViewController.m; path = Views/GNSTabScrollViewController.m; sourceTree = "<group>"; };
+		86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GNSTabScrollViewController.xib; path = Views/GNSTabScrollViewController.xib; sourceTree = "<group>"; };
+		86C50A6F19B2CF580062E09B /* GNSColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSColorUtils.h; path = Utils/GNSColorUtils.h; sourceTree = "<group>"; };
+		86C50A7019B2CF580062E09B /* GNSColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSColorUtils.m; path = Utils/GNSColorUtils.m; sourceTree = "<group>"; };
 		AE814411F64946DC93900957 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +155,7 @@
 		86C50A0919B0B0E40062E09B /* gnsy */ = {
 			isa = PBXGroup;
 			children = (
+				86C50A6E19B2CEE10062E09B /* Utils */,
 				86C50A3919B0BD9F0062E09B /* Models */,
 				86C50A3819B0BD980062E09B /* Views */,
 				86C50A1219B0B0E40062E09B /* GNSAppDelegate.h */,
@@ -204,6 +213,9 @@
 				86C50A6419B1D6BA0062E09B /* GNSTabView.xib */,
 				86C50A6619B1D8760062E09B /* GNSTabView.h */,
 				86C50A6719B1D8760062E09B /* GNSTabView.m */,
+				86C50A6919B204890062E09B /* GNSTabScrollViewController.h */,
+				86C50A6A19B204890062E09B /* GNSTabScrollViewController.m */,
+				86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -219,6 +231,15 @@
 				86C50A5319B1825C0062E09B /* GNSNews.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		86C50A6E19B2CEE10062E09B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				86C50A6F19B2CF580062E09B /* GNSColorUtils.h */,
+				86C50A7019B2CF580062E09B /* GNSColorUtils.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +325,7 @@
 				86C50A1C19B0B0E40062E09B /* Images.xcassets in Resources */,
 				86C50A6519B1D6BA0062E09B /* GNSTabView.xib in Resources */,
 				86C50A6319B19C3F0062E09B /* GNSTableViewCell.xib in Resources */,
+				86C50A6D19B204890062E09B /* GNSTabScrollViewController.xib in Resources */,
 				86C50A4B19B0E51C0062E09B /* GNSContentScrollViewController.xib in Resources */,
 				86C50A0E19B0B0E40062E09B /* InfoPlist.strings in Resources */,
 				86C50A1719B0B0E40062E09B /* Main.storyboard in Resources */,
@@ -360,6 +382,7 @@
 			files = (
 				86C50A6119B19B9A0062E09B /* GNSTableViewCell.m in Sources */,
 				86C50A1019B0B0E40062E09B /* main.m in Sources */,
+				86C50A7119B2CF580062E09B /* GNSColorUtils.m in Sources */,
 				86C50A5419B1825C0062E09B /* GNSNews.m in Sources */,
 				86C50A4A19B0E51C0062E09B /* GNSContentScrollViewController.m in Sources */,
 				86C50A4E19B14DDA0062E09B /* GNSContent.m in Sources */,
@@ -367,6 +390,7 @@
 				86C50A5119B14F600062E09B /* GNSCategory.m in Sources */,
 				86C50A1419B0B0E40062E09B /* GNSAppDelegate.m in Sources */,
 				86C50A1A19B0B0E40062E09B /* GNSViewController.m in Sources */,
+				86C50A6C19B204890062E09B /* GNSTabScrollViewController.m in Sources */,
 				86C50A4219B0C5B50062E09B /* GNSContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
