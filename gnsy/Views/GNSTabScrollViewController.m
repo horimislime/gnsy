@@ -9,7 +9,7 @@
 #import "GNSTabScrollViewController.h"
 #import "GNSTabView.h"
 #import "GNSCategory.h"
-#import "GNSColorUtils.h"
+#import "UIColor+GNSUtils.h"
 
 @interface GNSTabScrollViewController ()
 @property(strong, nonatomic) IBOutlet UIScrollView *tabScrollView;
@@ -50,7 +50,7 @@ const static int TAB_HEIGHT=48;
 //        
 //    }
     NSString *code=_colorHexCodes[index];
-    return [GNSColorUtils UIColorFromHex:code];
+    return [UIColor colorWithHex:code];
 }
 
 - (void)addTab:(GNSCategory *)category {

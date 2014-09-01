@@ -1,21 +1,21 @@
 //
-//  GNSColorUtils.m
+//  UIColor+GNSUtils.m
 //  gnsy
 //
-//  Created by horimislime on 2014/08/31.
+//  Created by horimislime on 2014/09/01.
 //  Copyright (c) 2014年 horimislime. All rights reserved.
 //
 
-#import "GNSColorUtils.h"
+#import "UIColor+GNSUtils.h"
 
-@implementation GNSColorUtils
 /**
- * 16進数文字列からUIColorを生成する
+ * Generate UIColor from hex string
  *
  * http://qiita.com/SparklerApps/items/8cd37a5fe88dd20e4d07
  */
-+ (UIColor *)UIColorFromHex:(NSString *)hexString {
-    NSScanner *colorScanner = [NSScanner scannerWithString:hexString];
+@implementation UIColor (GNSUtils)
++ (UIColor *)colorWithHex:(NSString *)hexCode {
+    NSScanner *colorScanner = [NSScanner scannerWithString:hexCode];
     unsigned int color;
     if (![colorScanner scanHexInt:&color]) return nil;
     CGFloat r = ((color & 0xFF0000) >> 16) / 255.0f;
