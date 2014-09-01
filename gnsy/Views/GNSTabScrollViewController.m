@@ -9,6 +9,7 @@
 #import "GNSTabScrollViewController.h"
 #import "GNSTabView.h"
 #import "GNSCategory.h"
+#import "GNSColorUtils.h"
 
 @interface GNSTabScrollViewController ()
 @property(strong, nonatomic) IBOutlet UIScrollView *tabScrollView;
@@ -17,9 +18,12 @@
 
 @implementation GNSTabScrollViewController {
     NSMutableArray *_contentTabs;
+    
 }
 
-const static int TAB_WIDTH=16;
+static NSArray *_colorHexCodes;
+const static int TAB_WIDTH=80;
+const static int TAB_HEIGHT=48;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil {
@@ -33,23 +37,50 @@ const static int TAB_WIDTH=16;
 - (void)viewDidLoad {
     [super viewDidLoad];
     _contentTabs = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    _colorHexCodes=@[@"BF543B",
+                     @"CFEAF2",
+                     @"F0E3F8",
+                     @"F0E3F8",
+                     @"F0E3F8"];
+}
+
+- (UIColor *)getColorForIndex:(NSInteger)index {
+//    if(index>(_colorHexCodes.count-1)){
+//        
+//    }
+    NSString *code=_colorHexCodes[index];
+    return [GNSColorUtils UIColorFromHex:code];
 }
 
 - (void)addTab:(GNSCategory *)category {
     GNSTabView *tab = [[GNSTabView alloc] init];
     [tab setContent:category];
     
-    tab.frame=CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, 30);
-    CGRect frame=tab.frame;
-    [self.view addSubview:tab];
+    [self.tabScrollView addSubview:tab];
+    
+    
+    tab.backgroundColor=[self getColorForIndex:_contentTabs.count];
+
+    CGRect frame=CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, TAB_HEIGHT);
+//    tab.frame=frame;
+    [tab setFrameSize:frame];
+    tab.layer.cornerRadius=5.0f;
+    
     [_contentTabs addObject:tab];
+    
+    float maxWidth=_contentTabs.count*TAB_WIDTH;
+    [self.tabScrollView setContentSize:CGSizeMake(640, TAB_HEIGHT)];
+}
+
+- (float)calcurateTabWidth:(NSString *)labelText {
+    return 0.0f;
 }
 
 - (void)initTabForContents:(NSArray *)contents {
-    [self addTab:contents[0]];
-//    for(GNSCategory *category in contents) {
-//        [self addTab:category];
-//    }
+    for(GNSCategory *category in contents) {
+        [self addTab:category];
+    }
 }
 
 @end

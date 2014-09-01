@@ -10,17 +10,14 @@
 
 @interface GNSTabView ()
 
-
-
 @end
 
 @implementation GNSTabView
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame category:(GNSCategory *)category {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        //        self.tabTitleLabel=
     }
     return self;
 }
@@ -35,28 +32,22 @@
             [self addSubview:topView];
         }
     }
-  return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        if (self) {
-            if (!self.subviews.count) {
-                GNSTabView *topView =
-                [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
-                                              owner:nil
-                                            options:nil][0];
-                [self addSubview:topView];
-            }
-        }
-    }
-  return self;
+    return self;
 }
 
 - (void)setContent:(GNSCategory *)category {
-    GNSTabView *tab=self.subviews[0];
-    tab.tabTitleLabel.text=category.categoryTitle;
-    
+    GNSTabView *tab = self.subviews[0];
+    tab.tabTitleLabel.text = category.categoryTitle;
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    GNSTabView *sub = self.subviews[0];
+    sub.backgroundColor = backgroundColor;
+}
+
+- (void)setFrameSize:(CGRect)frame {
+    GNSTabView *sub = self.subviews[0];
+    self.frame = frame;
+    sub.frame = frame;
+}
 @end

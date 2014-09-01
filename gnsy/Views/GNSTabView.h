@@ -10,7 +10,7 @@
 #import "GNSCategory.h"
 
 @interface GNSTabView : UIView
-@property (strong, nonatomic) IBOutlet UIView *tabColorAreaView;
 @property (strong, nonatomic) IBOutlet UILabel *tabTitleLabel;
 - (void)setContent:(GNSCategory *)category;
+- (void)setFrameSize:(CGRect)frame;
 @end
