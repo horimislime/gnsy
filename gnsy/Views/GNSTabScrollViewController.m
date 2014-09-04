@@ -13,6 +13,7 @@
 
 @interface GNSTabScrollViewController ()
 @property(strong, nonatomic) IBOutlet UIScrollView *tabScrollView;
+@property (strong, nonatomic) IBOutlet UIView *borderAreaView;
 
 @end
 
@@ -23,15 +24,10 @@
 
 static NSArray *_colorHexCodes;
 const static int TAB_WIDTH=160;
-const static int TAB_HEIGHT=40;
+const static int TAB_HEIGHT=42;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil
-               bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (instancetype)initController {
+    return [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
 }
 
 - (void)viewDidLoad {
@@ -45,14 +41,10 @@ const static int TAB_HEIGHT=40;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    for(GNSTabView *tab in _contentTabs){
-        if(!self.tabScrollView.dragging && [event touchesForView:tab]){
-            NSLog(@"");
-            [_lastActiveTab setTabSelected:NO];
-            [tab setTabSelected:YES];
-            _lastActiveTab = tab;
-            
-            [self.delegate tabSelectionChanged:tab];
+    for(int i=0;i<_contentTabs.count;i++) {
+        if(!self.tabScrollView.dragging && [event touchesForView:_contentTabs[i]]){
+            [self selectTabAtIndex:i];
+            [self.delegate tabSelectionChanged:_contentTabs[i]];
         }
     }
 }
@@ -68,22 +60,15 @@ const static int TAB_HEIGHT=40;
 
 - (void)addTab:(GNSCategory *)category {
     UIColor *tabColor=[self getColorForIndex:_contentTabs.count];
+    CGRect newFrame = CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, TAB_HEIGHT);
     GNSTabView *tab =[[GNSTabView alloc] initWithCategory:category
-                                                 tabColor:tabColor];
-//    [tab setContent:category];
-    
+                                                 tabColor:tabColor
+                                                    frame:newFrame];
     [self.tabScrollView addSubview:tab];
-    
-    
-//    tab.backgroundColor=[self getColorForIndex:_contentTabs.count];
 
-    [tab setFrameSize:CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, TAB_HEIGHT)];
-    tab.layer.cornerRadius=5.0f;
-    
     [_contentTabs addObject:tab];
     if(_contentTabs.count ==1) {
-        [tab setTabSelected:YES];
-        _lastActiveTab = tab;
+        [self selectTabAtIndex:0];
     }
     
     [self.tabScrollView setContentSize:CGSizeMake(_contentTabs.count * TAB_WIDTH, TAB_HEIGHT)];
@@ -100,8 +85,11 @@ const static int TAB_HEIGHT=40;
 }
 
 - (void)selectTabAtIndex:(NSInteger)index {
+    GNSTabView *selectedTab = _contentTabs[index];
+    [selectedTab setTabSelected:YES];
+    self.borderAreaView.backgroundColor = selectedTab.tabColor;
+    
     [_lastActiveTab setTabSelected:NO];
-    [_contentTabs[index] setTabSelected:YES];
-    _lastActiveTab = _contentTabs[index];
+    _lastActiveTab = selectedTab;
 }
 @end

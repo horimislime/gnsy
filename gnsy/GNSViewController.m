@@ -14,7 +14,6 @@
 
 @interface GNSViewController ()
 @property (strong, nonatomic) IBOutlet UIView *tabAreaView;
-@property (strong, nonatomic) IBOutlet UIView *borderAreaView;
 @property (strong, nonatomic) IBOutlet UIScrollView *contentAreaView;
 @end
 
@@ -26,8 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    tabController = [[GNSTabScrollViewController alloc] initWithNibName:@"GNSTabScrollViewController"
-                                                                 bundle:nil];
+    tabController = [[GNSTabScrollViewController alloc] initController];
     tabController.delegate = self;
     [self.tabAreaView addSubview:tabController.view];
     
@@ -50,15 +48,10 @@
 }
 
 - (void)tabSelectionChanged:(GNSTabView *)tab {
-    [self updateBorderColor:tab.tabColor];
-}
-
-- (void)updateBorderColor:(UIColor *)borderColor {
-    self.borderAreaView.backgroundColor = borderColor;
+//    [self updateBorderColor:tab.tabColor];
 }
 
 - (void)contentViewChanged:(NSInteger)index {
-    NSLog(@"page index = %d", index);
     [tabController selectTabAtIndex:index];
 }
 

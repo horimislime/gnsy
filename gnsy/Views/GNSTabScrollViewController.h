@@ -14,6 +14,8 @@
 @end
 @interface GNSTabScrollViewController : UIViewController<UIScrollViewDelegate>
 @property id<GNSTabDelegate> delegate;
+
+- (instancetype)initController;
 - (void)initTabForContents:(NSArray *)contents;
 - (void)selectTabAtIndex:(NSInteger)index;
 @end

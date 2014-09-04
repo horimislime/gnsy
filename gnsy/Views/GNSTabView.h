@@ -13,7 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *tabTitleLabel;
 @property UIColor *tabColor;
 
-- (instancetype)initWithCategory:(GNSCategory *)category tabColor:(UIColor *)color;
+- (instancetype)initWithCategory:(GNSCategory *)category tabColor:(UIColor *)color frame:(CGRect)frame;
 - (void)setContent:(GNSCategory *)category;
 - (void)setFrameSize:(CGRect)frame;
 - (void)setTabSelected:(BOOL)selected;

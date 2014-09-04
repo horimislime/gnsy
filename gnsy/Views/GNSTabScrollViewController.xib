@@ -6,22 +6,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GNSTabScrollViewController">
             <connections>
+                <outlet property="borderAreaView" destination="gEW-Lg-D1r" id="trH-80-a1I"/>
                 <outlet property="tabScrollView" destination="Zwh-VM-Oec" id="Njn-z4-4Q9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Zwh-VM-Oec">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.78651494570000002" green="0.78651494570000002" blue="0.78651494570000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </scrollView>
+                <view contentMode="scaleToFill" id="gEW-Lg-D1r" userLabel="View - 境界線">
+                    <rect key="frame" x="0.0" y="31" width="320" height="11"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </view>
     </objects>
 </document>

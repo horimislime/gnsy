@@ -9,6 +9,7 @@
 #import "GNSTabView.h"
 
 @interface GNSTabView ()
+@property (strong, nonatomic) IBOutlet UIView *tabBackgroundView;
 
 @end
 
@@ -22,8 +23,12 @@
     return self;
 }
 
-- (instancetype)initWithCategory:(GNSCategory *)category tabColor:(UIColor *)color {
-    if((self=GNSTabView.new)) {
+- (instancetype)initWithCategory:(GNSCategory *)category
+                        tabColor:(UIColor *)color
+                           frame:(CGRect)frame {
+    
+    if((self=[GNSTabView new])) {
+        self.frame = frame;
         self.tabTitleLabel.text=category.categoryTitle;
         self.tabColor = color;
         [self setTabSelected:NO];
@@ -32,29 +37,18 @@
 }
 
 - (instancetype)init {
-//    if (self = [super init]) {
-//        if (self && !self.subviews.count) {
-//            GNSTabView *topView =
-//            [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
-//                                          owner:nil
-//                                        options:nil][0];
-//            [self addSubview:topView];
-//        }
-//    }
-//    return self;
     return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
                                   owner:nil
                                 options:nil][0];
-    
 }
 
 - (void)setTabSelected:(BOOL)selected {
     if(selected) {
-        self.backgroundColor = self.tabColor;
+        self.tabBackgroundView.backgroundColor = self.tabColor;
         self.tabTitleLabel.textColor = [UIColor whiteColor];
     }
     else {
-        self.backgroundColor = [UIColor whiteColor];
+        self.tabBackgroundView.backgroundColor = [UIColor whiteColor];
         self.tabTitleLabel.textColor = self.tabColor;
     }
 }
