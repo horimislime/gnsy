@@ -40,17 +40,16 @@ const static int TAB_HEIGHT=48;
     
     _colorHexCodes=@[@"BF543B",
                      @"CFEAF2",
-                     @"F0E3F8",
-                     @"F0E3F8",
                      @"F0E3F8"];
 }
 
 - (UIColor *)getColorForIndex:(NSInteger)index {
-//    if(index>(_colorHexCodes.count-1)){
-//        
-//    }
-    NSString *code=_colorHexCodes[index];
-    return [UIColor colorWithHex:code];
+    if(index > (_colorHexCodes.count - 1)) {
+        return [UIColor colorWithHex:_colorHexCodes[index % _colorHexCodes.count]];
+    }
+    else {
+        return [UIColor colorWithHex:_colorHexCodes[index]];
+    }
 }
 
 - (void)addTab:(GNSCategory *)category {
