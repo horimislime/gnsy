@@ -22,8 +22,8 @@
 }
 
 static NSArray *_colorHexCodes;
-const static int TAB_WIDTH=80;
-const static int TAB_HEIGHT=48;
+const static int TAB_WIDTH=160;
+const static int TAB_HEIGHT=40;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil {
@@ -36,11 +36,20 @@ const static int TAB_HEIGHT=48;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabScrollView.delegate = self;
     _contentTabs = [[NSMutableArray alloc] initWithCapacity:0];
     
     _colorHexCodes=@[@"BF543B",
                      @"CFEAF2",
                      @"F0E3F8"];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    for(GNSTabView *tab in _contentTabs){
+        if(!self.tabScrollView.dragging && [event touchesForView:tab]){
+            NSLog(@"");
+        }
+    }
 }
 
 - (UIColor *)getColorForIndex:(NSInteger)index {
@@ -53,23 +62,25 @@ const static int TAB_HEIGHT=48;
 }
 
 - (void)addTab:(GNSCategory *)category {
-    GNSTabView *tab = [[GNSTabView alloc] init];
-    [tab setContent:category];
+    UIColor *tabColor=[self getColorForIndex:_contentTabs.count];
+    GNSTabView *tab =[[GNSTabView alloc] initWithCategory:category
+                                                 tabColor:tabColor];
+//    [tab setContent:category];
     
     [self.tabScrollView addSubview:tab];
     
     
-    tab.backgroundColor=[self getColorForIndex:_contentTabs.count];
+//    tab.backgroundColor=[self getColorForIndex:_contentTabs.count];
 
-    CGRect frame=CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, TAB_HEIGHT);
-//    tab.frame=frame;
-    [tab setFrameSize:frame];
+    [tab setFrameSize:CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, TAB_HEIGHT)];
     tab.layer.cornerRadius=5.0f;
     
     [_contentTabs addObject:tab];
+    if(_contentTabs.count ==1) {
+        [tab setTabSelected:YES];
+    }
     
-    float maxWidth=_contentTabs.count*TAB_WIDTH;
-    [self.tabScrollView setContentSize:CGSizeMake(640, TAB_HEIGHT)];
+    [self.tabScrollView setContentSize:CGSizeMake(_contentTabs.count * TAB_WIDTH, TAB_HEIGHT)];
 }
 
 - (float)calcurateTabWidth:(NSString *)labelText {

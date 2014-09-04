@@ -11,6 +11,8 @@
 
 @interface GNSTabView : UIView
 @property (strong, nonatomic) IBOutlet UILabel *tabTitleLabel;
+- (instancetype)initWithCategory:(GNSCategory *)category tabColor:(UIColor *)color;
 - (void)setContent:(GNSCategory *)category;
 - (void)setFrameSize:(CGRect)frame;
+- (void)setTabSelected:(BOOL)selected;
 @end

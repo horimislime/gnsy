@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GNSTabScrollViewController : UIViewController
+@interface GNSTabScrollViewController : UIViewController<UIScrollViewDelegate>
 - (void)initTabForContents:(NSArray *)contents;
 @end

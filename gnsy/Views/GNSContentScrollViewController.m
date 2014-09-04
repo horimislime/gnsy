@@ -7,6 +7,7 @@
 //
 
 #import "GNSContentScrollViewController.h"
+# import "UIScrollView+TouchEvent.h"
 
 @interface GNSContentScrollViewController ()
 @property(strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
