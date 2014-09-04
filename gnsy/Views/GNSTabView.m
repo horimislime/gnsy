@@ -12,9 +12,7 @@
 
 @end
 
-@implementation GNSTabView {
-    UIColor *_tabColor;
-}
+@implementation GNSTabView
 
 - (id)initWithFrame:(CGRect)frame category:(GNSCategory *)category {
     self = [super initWithFrame:frame];
@@ -27,7 +25,7 @@
 - (instancetype)initWithCategory:(GNSCategory *)category tabColor:(UIColor *)color {
     if((self=GNSTabView.new)) {
         self.tabTitleLabel.text=category.categoryTitle;
-        _tabColor = color;
+        self.tabColor = color;
         [self setTabSelected:NO];
     }
     return self;
@@ -52,17 +50,16 @@
 
 - (void)setTabSelected:(BOOL)selected {
     if(selected) {
-        self.backgroundColor = _tabColor;
+        self.backgroundColor = self.tabColor;
         self.tabTitleLabel.textColor = [UIColor whiteColor];
     }
     else {
         self.backgroundColor = [UIColor whiteColor];
-        self.tabTitleLabel.textColor = _tabColor;
+        self.tabTitleLabel.textColor = self.tabColor;
     }
 }
 
 - (void)setContent:(GNSCategory *)category {
-    GNSTabView *tab = self.subviews[0];
     self.tabTitleLabel.text = category.categoryTitle;
 }
 

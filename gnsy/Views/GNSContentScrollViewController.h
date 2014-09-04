@@ -10,10 +10,16 @@
 #import "GNSContent.h"
 #import "GNSContentViewController.h"
 
+@protocol GNSContentScrollViewDelegate <NSObject>
+- (void)contentViewChanged:(NSInteger)index;
+@end
+
 @interface GNSContentScrollViewController : UIViewController<
     GNSContentDelegate,
     UIScrollViewDelegate
 >
+
+@property id<GNSContentScrollViewDelegate> delegate;
 
 - (void)setCategories:(NSArray *)categories;
 @end

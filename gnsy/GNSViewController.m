@@ -28,10 +28,12 @@
     
     tabController = [[GNSTabScrollViewController alloc] initWithNibName:@"GNSTabScrollViewController"
                                                                  bundle:nil];
+    tabController.delegate = self;
     [self.tabAreaView addSubview:tabController.view];
     
     scrollController = [[GNSContentScrollViewController alloc] initWithNibName:@"GNSContentScrollViewController"
                                                                         bundle:nil];
+    scrollController.delegate = self;
     [self.contentAreaView addSubview:scrollController.view];
     
     // TODO:カテゴリのロードはviewロード前(スプラッシュのバックグランドとか)でやる
@@ -46,4 +48,22 @@
 - (void)contentDidFailLoad {
     
 }
+
+- (void)tabSelectionChanged:(GNSTabView *)tab {
+    [self updateBorderColor:tab.tabColor];
+}
+
+- (void)updateBorderColor:(UIColor *)borderColor {
+    self.borderAreaView.backgroundColor = borderColor;
+}
+
+- (void)contentViewChanged:(NSInteger)index {
+    NSLog(@"page index = %d", index);
+    [tabController selectTabAtIndex:index];
+}
+
+
+
+
+
 @end

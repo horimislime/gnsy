@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GNSTabView.h"
 
+@protocol GNSTabDelegate <NSObject>
+- (void)tabSelectionChanged:(GNSTabView *)tab;
+@end
 @interface GNSTabScrollViewController : UIViewController<UIScrollViewDelegate>
+@property id<GNSTabDelegate> delegate;
 - (void)initTabForContents:(NSArray *)contents;
+- (void)selectTabAtIndex:(NSInteger)index;
 @end

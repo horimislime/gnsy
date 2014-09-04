@@ -62,9 +62,15 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    NSLog(@"");
+}
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    NSLog(@"");
+    
+}
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-//    int page = scrollView.contentOffset.x/scrollView.contentSize.width;
-    CGFloat scrollPerPage=scrollView.contentOffset.x / _contentWidth;
-    NSLog(@"page=%f",scrollPerPage);
+    CGFloat estimatedPageIndex=scrollView.contentOffset.x / _contentWidth;
+    [self.delegate contentViewChanged:(NSInteger)roundf(estimatedPageIndex)];
 }
 @end

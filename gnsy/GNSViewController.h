@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "GNSContent.h"
+#import "GNSTabScrollViewController.h"
+#import "GNSContentScrollViewController.h"
 #import "GNSContentViewController.h"
 
-@interface GNSViewController : UIViewController<GNSContentDelegate>
+@interface GNSViewController : UIViewController<
+    GNSContentDelegate,
+    GNSTabDelegate,
+    GNSContentScrollViewDelegate
+>
 
 @end

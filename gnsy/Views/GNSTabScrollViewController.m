@@ -18,7 +18,7 @@
 
 @implementation GNSTabScrollViewController {
     NSMutableArray *_contentTabs;
-    
+    GNSTabView *_lastActiveTab;
 }
 
 static NSArray *_colorHexCodes;
@@ -48,6 +48,11 @@ const static int TAB_HEIGHT=40;
     for(GNSTabView *tab in _contentTabs){
         if(!self.tabScrollView.dragging && [event touchesForView:tab]){
             NSLog(@"");
+            [_lastActiveTab setTabSelected:NO];
+            [tab setTabSelected:YES];
+            _lastActiveTab = tab;
+            
+            [self.delegate tabSelectionChanged:tab];
         }
     }
 }
@@ -78,6 +83,7 @@ const static int TAB_HEIGHT=40;
     [_contentTabs addObject:tab];
     if(_contentTabs.count ==1) {
         [tab setTabSelected:YES];
+        _lastActiveTab = tab;
     }
     
     [self.tabScrollView setContentSize:CGSizeMake(_contentTabs.count * TAB_WIDTH, TAB_HEIGHT)];
@@ -93,4 +99,9 @@ const static int TAB_HEIGHT=40;
     }
 }
 
+- (void)selectTabAtIndex:(NSInteger)index {
+    [_lastActiveTab setTabSelected:NO];
+    [_contentTabs[index] setTabSelected:YES];
+    _lastActiveTab = _contentTabs[index];
+}
 @end
