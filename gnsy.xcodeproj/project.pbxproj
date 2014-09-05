@@ -37,6 +37,8 @@
 		86C50A6D19B204890062E09B /* GNSTabScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */; };
 		86EC77EC19B8888400E6CE23 /* GNSTabUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 86EC77EB19B8888400E6CE23 /* GNSTabUtils.m */; };
 		86EC77EF19B88A8700E6CE23 /* UIScrollView+TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 86EC77EE19B88A8700E6CE23 /* UIScrollView+TouchEvent.m */; };
+		86EC77F319B9B47700E6CE23 /* GNSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86EC77F119B9B47700E6CE23 /* GNSWebViewController.m */; };
+		86EC77F419B9B47700E6CE23 /* GNSWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86EC77F219B9B47700E6CE23 /* GNSWebViewController.xib */; };
 		97A24EEE087D456B9DE2531D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCFB5A346954AFBAA539AEF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,9 @@
 		86EC77EB19B8888400E6CE23 /* GNSTabUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSTabUtils.m; path = Utils/GNSTabUtils.m; sourceTree = "<group>"; };
 		86EC77ED19B88A8700E6CE23 /* UIScrollView+TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TouchEvent.h"; path = "Categories/UIScrollView+TouchEvent.h"; sourceTree = "<group>"; };
 		86EC77EE19B88A8700E6CE23 /* UIScrollView+TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+TouchEvent.m"; path = "Categories/UIScrollView+TouchEvent.m"; sourceTree = "<group>"; };
+		86EC77F019B9B47700E6CE23 /* GNSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GNSWebViewController.h; path = Views/GNSWebViewController.h; sourceTree = "<group>"; };
+		86EC77F119B9B47700E6CE23 /* GNSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GNSWebViewController.m; path = Views/GNSWebViewController.m; sourceTree = "<group>"; };
+		86EC77F219B9B47700E6CE23 /* GNSWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GNSWebViewController.xib; path = Views/GNSWebViewController.xib; sourceTree = "<group>"; };
 		AE814411F64946DC93900957 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +239,9 @@
 				86C50A6919B204890062E09B /* GNSTabScrollViewController.h */,
 				86C50A6A19B204890062E09B /* GNSTabScrollViewController.m */,
 				86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */,
+				86EC77F019B9B47700E6CE23 /* GNSWebViewController.h */,
+				86EC77F119B9B47700E6CE23 /* GNSWebViewController.m */,
+				86EC77F219B9B47700E6CE23 /* GNSWebViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -339,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86EC77F419B9B47700E6CE23 /* GNSWebViewController.xib in Resources */,
 				86C50A4319B0C5B50062E09B /* GNSContentViewController.xib in Resources */,
 				86C50A1C19B0B0E40062E09B /* Images.xcassets in Resources */,
 				86C50A6519B1D6BA0062E09B /* GNSTabView.xib in Resources */,
@@ -412,6 +421,7 @@
 				86C50A1A19B0B0E40062E09B /* GNSViewController.m in Sources */,
 				86C50A6C19B204890062E09B /* GNSTabScrollViewController.m in Sources */,
 				86C50A4219B0C5B50062E09B /* GNSContentViewController.m in Sources */,
+				86EC77F319B9B47700E6CE23 /* GNSWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

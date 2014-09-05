@@ -65,10 +65,11 @@
 -(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
     NSLog(@"");
 }
+
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     NSLog(@"");
-    
 }
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     CGFloat estimatedPageIndex=scrollView.contentOffset.x / _contentWidth;
     [self.delegate contentViewChanged:(NSInteger)roundf(estimatedPageIndex)];

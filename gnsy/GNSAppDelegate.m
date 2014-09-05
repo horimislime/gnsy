@@ -7,12 +7,22 @@
 //
 
 #import "GNSAppDelegate.h"
+#import "GNSViewController.h"
 
 @implementation GNSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    GNSViewController *controller = [storyboard instantiateInitialViewController];
+    
+    UINavigationController *naviController = [[UINavigationController alloc] initWithRootViewController:controller];
+    naviController.navigationBarHidden = YES;
+    
+    self.window.rootViewController = naviController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							

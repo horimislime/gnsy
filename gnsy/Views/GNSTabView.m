@@ -29,6 +29,7 @@
                                            frame.origin.y + frame.size.height,
                                            CGRectGetWidth(frame),
                                            CGRectGetHeight(frame));
+        
         _tabFrameWhenActive = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
         
         self.tabBackgroundView.frame = _tabFrameWhenInactive;
@@ -62,6 +63,8 @@
             self.tabBackgroundView.frame = _tabFrameWhenInactive;
         }];
     }
+    
+    
 }
 
 

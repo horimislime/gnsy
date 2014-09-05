@@ -7,6 +7,7 @@
 //
 
 #import "GNSContentViewController.h"
+#import "GNSWebViewController.h"
 #import "GNSNews.h"
 #import "GNSTableViewCell.h"
 
@@ -53,9 +54,16 @@
 }
 
 #pragma mark - UITableViewDelegate
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GNSNews *news = _contents[indexPath.row];
+    GNSWebViewController *webViewController = [[GNSWebViewController alloc] initWithUrl:news.newsUrl];
+    
+    UINavigationController *navigationController =(UINavigationController *)[[UIApplication sharedApplication] delegate].window.rootViewController;
+    [navigationController pushViewController:webViewController animated:YES];
+    
+     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120.0;

@@ -42,8 +42,10 @@ const static int TAB_HEIGHT=42;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     for(int i=0;i<_contentTabs.count;i++) {
-        if(!self.tabScrollView.dragging && [event touchesForView:_contentTabs[i]]){
+        GNSTabView *tab = _contentTabs[i];
+        if(!self.tabScrollView.dragging && [event touchesForView:tab]){
             [self selectTabAtIndex:i];
+            [self scrollToTab:tab];
             [self.delegate tabSelectionChanged:_contentTabs[i]];
         }
     }
@@ -56,6 +58,27 @@ const static int TAB_HEIGHT=42;
     else {
         return [UIColor colorWithHex:_colorHexCodes[index]];
     }
+}
+
+/**
+ *  指定したタブの位置までスクロールする。
+ *
+ *  @param tab タブ
+ */
+- (void)scrollToTab:(GNSTabView *)tab {
+    CGFloat tabCenterX = tab.frame.origin.x + CGRectGetWidth(tab.frame) / 2;
+    CGFloat scrollToPositionX = tabCenterX - CGRectGetWidth(self.tabScrollView.frame) / 2;
+    CGFloat maxScrollableOffset =self.tabScrollView.contentSize.width-CGRectGetWidth([UIScreen mainScreen].bounds);
+    
+    if(scrollToPositionX < 0) {
+        scrollToPositionX = 0;
+    }
+    else if (scrollToPositionX > maxScrollableOffset) {
+        scrollToPositionX = maxScrollableOffset;
+    }
+    [UIView animateWithDuration:0.4f animations:^ {
+        self.tabScrollView.contentOffset = CGPointMake(scrollToPositionX, 0);
+    }];
 }
 
 - (void)addTab:(GNSCategory *)category {
@@ -91,6 +114,7 @@ const static int TAB_HEIGHT=42;
     }
     
     [selectedTab setTabSelected:YES];
+    [self scrollToTab:selectedTab];
     self.borderAreaView.backgroundColor = selectedTab.tabColor;
     
     [_lastActiveTab setTabSelected:NO];
