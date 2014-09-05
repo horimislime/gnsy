@@ -13,23 +13,26 @@
 
 @end
 
-@implementation GNSTabView
-
-- (id)initWithFrame:(CGRect)frame category:(GNSCategory *)category {
-    self = [super initWithFrame:frame];
-    if (self) {
-        //        self.tabTitleLabel=
-    }
-    return self;
+@implementation GNSTabView {
+    CGRect _defaultFrame;
+    CGRect _tabFrameWhenInactive;
+    CGRect _tabFrameWhenActive;
 }
 
 - (instancetype)initWithCategory:(GNSCategory *)category
                         tabColor:(UIColor *)color
                            frame:(CGRect)frame {
     
-    if((self=[GNSTabView new])) {
+    if((self = [GNSTabView new])) {
         self.frame = frame;
-        self.tabTitleLabel.text=category.categoryTitle;
+        _tabFrameWhenInactive = CGRectMake(0,
+                                           frame.origin.y + frame.size.height,
+                                           CGRectGetWidth(frame),
+                                           CGRectGetHeight(frame));
+        _tabFrameWhenActive = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+        
+        self.tabBackgroundView.frame = _tabFrameWhenInactive;
+        self.tabTitleLabel.text = category.categoryTitle;
         self.tabColor = color;
         [self setTabSelected:NO];
     }
@@ -38,34 +41,29 @@
 
 - (instancetype)init {
     return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class])
-                                  owner:nil
-                                options:nil][0];
+                                         owner:nil
+                                       options:nil][0];
 }
 
 - (void)setTabSelected:(BOOL)selected {
     if(selected) {
         self.tabBackgroundView.backgroundColor = self.tabColor;
         self.tabTitleLabel.textColor = [UIColor whiteColor];
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tabBackgroundView.frame = _tabFrameWhenActive;
+        }];
     }
     else {
         self.tabBackgroundView.backgroundColor = [UIColor whiteColor];
         self.tabTitleLabel.textColor = self.tabColor;
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tabBackgroundView.frame = _tabFrameWhenInactive;
+        }];
     }
 }
 
-- (void)setContent:(GNSCategory *)category {
-    self.tabTitleLabel.text = category.categoryTitle;
-}
 
-//- (void)setBackgroundColor:(UIColor *)backgroundColor {
-//    GNSTabView *sub = self.subviews[0];
-//    sub.backgroundColor = backgroundColor;
-//    self.backgroundColor
-//}
 
-- (void)setFrameSize:(CGRect)frame {
-//    GNSTabView *sub = self.subviews[0];
-    self.frame = frame;
-//    sub.frame = frame;
-}
 @end

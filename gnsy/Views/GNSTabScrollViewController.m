@@ -67,7 +67,7 @@ const static int TAB_HEIGHT=42;
     [self.tabScrollView addSubview:tab];
 
     [_contentTabs addObject:tab];
-    if(_contentTabs.count ==1) {
+    if(_contentTabs.count == 1) {
         [self selectTabAtIndex:0];
     }
     
@@ -86,6 +86,10 @@ const static int TAB_HEIGHT=42;
 
 - (void)selectTabAtIndex:(NSInteger)index {
     GNSTabView *selectedTab = _contentTabs[index];
+    if(selectedTab == _lastActiveTab) {
+        return;
+    }
+    
     [selectedTab setTabSelected:YES];
     self.borderAreaView.backgroundColor = selectedTab.tabColor;
     
