@@ -38,10 +38,10 @@
     // Configure the view for the selected state
 }
 
-- (void)loadContent:(GNSNews *)content {
+- (void)loadContent:(GNSNews *)content category:(GNSCategory *)category {
     
     self.contentTitleLabel.text=content.newsTitle;
-    self.contentMediaLabel.text=@"dummy";
+    self.contentMediaLabel.text=category.categoryTitle;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:content.newsPicture]]];

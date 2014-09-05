@@ -16,7 +16,7 @@
 @end
 
 @implementation GNSContentViewController {
-    NSString *_categoryId;
+    GNSCategory *_category;
     GNSNews *_loader;
     NSArray *_contents;
 }
@@ -24,8 +24,8 @@
 - (id)initWithContentInfo:(GNSCategory *)info lazy:(BOOL)lazy {
     self = [self initWithNibName:@"GNSContentViewController" bundle:nil];
     if (self) {
-        _categoryId = info.categoryId;
-        _loader = [[GNSNews alloc] initWithContentId:_categoryId];
+        _category = info;
+        _loader = [[GNSNews alloc] initWithContentId:_category.categoryId];
         _loader.delegate = self;
         
         [_loader fetchContent];
@@ -40,7 +40,7 @@
     self.contentTableView.dataSource=self;
     
     [self.contentTableView registerNib:[UINib nibWithNibName:@"GNSTableViewCell" bundle:nil]
-                forCellReuseIdentifier:_categoryId];
+                forCellReuseIdentifier:_category.categoryId];
     
 }
 
@@ -75,9 +75,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GNSTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:_categoryId];
+    GNSTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:_category.categoryId];
     GNSNews *news = _contents[indexPath.row];
-    [cell loadContent:news];
+    [cell loadContent:news category:_category];
     
     return cell;
 }

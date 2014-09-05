@@ -32,7 +32,7 @@
     [self.contentWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
 }
 - (void)viewWillDisappear:(BOOL)animated {
-    UINavigationController *naviController =(UINavigationController *)[[UIApplication sharedApplication] delegate].window.rootViewController;
+    UINavigationController *naviController = (UINavigationController *)[[UIApplication sharedApplication] delegate].window.rootViewController;
     naviController.navigationBarHidden = YES;
 }
 

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GNSNews.h"
+#import "GNSCategory.h"
 
 @interface GNSTableViewCell : UITableViewCell
-- (void)loadContent:(GNSNews *)content;
+- (void)loadContent:(GNSNews *)content category:(GNSCategory *)category;
 @end
