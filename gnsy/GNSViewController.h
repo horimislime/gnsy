@@ -13,7 +13,6 @@
 #import "GNSContentViewController.h"
 
 @interface GNSViewController : UIViewController<
-    GNSContentDelegate,
     GNSTabDelegate,
     GNSContentScrollViewDelegate
 >

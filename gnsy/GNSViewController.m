@@ -29,33 +29,29 @@
     tabController.delegate = self;
     [self.tabAreaView addSubview:tabController.view];
     
-    scrollController = [[GNSContentScrollViewController alloc] initWithNibName:@"GNSContentScrollViewController"
-                                                                        bundle:nil];
+    scrollController = [[GNSContentScrollViewController alloc] initController];
     scrollController.delegate = self;
     [self.contentAreaView addSubview:scrollController.view];
     
     // TODO:カテゴリのロードはviewロード前(スプラッシュのバックグランドとか)でやる
-    [GNSCategory setDelegate:self];
-    [GNSCategory fetchContent];
-}
-
-- (void)contentDidFinishLoad:(NSArray *)contents {
-    [tabController initTabForContents:contents];
-    [scrollController setCategories:contents];
-}
-- (void)contentDidFailLoad {
-    
-}
-
-- (void)tabSelectionChanged:(GNSTabView *)tab {
-//    [self updateBorderColor:tab.tabColor];
+    [GNSCategory
+     fetchContentAsync:NO
+     success:^(NSArray *contents) {
+         [tabController initTabForContents:contents];
+         [scrollController setCategories:contents];
+    }
+     failure:^(NSError *error) {
+         NSLog(@"error: %@", error);
+    }];
 }
 
 - (void)contentViewChanged:(NSInteger)index {
     [tabController selectTabAtIndex:index];
 }
 
-
+- (void)tabSelectionChanged:(GNSTabView *)tab {
+//    [scrollController ]
+}
 
 
 

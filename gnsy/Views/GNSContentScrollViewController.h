@@ -21,5 +21,6 @@
 
 @property id<GNSContentScrollViewDelegate> delegate;
 
+- (instancetype)initController;
 - (void)setCategories:(NSArray *)categories;
 @end

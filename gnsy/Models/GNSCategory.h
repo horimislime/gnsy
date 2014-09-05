@@ -11,8 +11,11 @@
 @interface GNSCategory : GNSContent
 
 - (id)initWithId:(NSString *)aCategoryId title:(NSString *)aCategoryTitle;
-+ (void)setDelegate:(id<GNSContentDelegate>)delegate;
-//@property(weak, nonatomic) id<GNSContentDelegate> delegate;
+
++ (void)fetchContentAsync:(BOOL)doAsync
+                  success:(void(^)(NSArray *categories))success
+                  failure:(void(^)(NSError *error))failure;
+
 @property(strong, nonatomic)NSString *categoryId;
 @property(strong, nonatomic)NSString *categoryTitle;
 @end

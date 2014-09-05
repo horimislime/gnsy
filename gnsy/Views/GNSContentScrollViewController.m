@@ -20,10 +20,9 @@
     NSInteger _pageCount;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil
-               bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+- (instancetype)initController {
+    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+    if(self) {
         _pageCount = 0;
     }
     return self;

@@ -11,8 +11,6 @@
 
 @implementation GNSCategory
 
-static id<GNSContentDelegate> _delegate;
-
 @synthesize categoryId;
 @synthesize categoryTitle;
 
@@ -24,11 +22,10 @@ static id<GNSContentDelegate> _delegate;
     return self;
 }
 
-+ (void)setDelegate:(id<GNSContentDelegate>)delegate {
-    _delegate = delegate;
-}
-
-+ (void)fetchContent {
++ (void)fetchContentAsync:(BOOL)doAsync
+                  success:(void (^)(NSArray *))success
+                  failure:(void (^)(NSError *))failure {
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://api.myjson.com/bins/12dbv"
       parameters:nil
@@ -41,11 +38,12 @@ static id<GNSContentDelegate> _delegate;
                                                       title:category[@"name"]]];
              }
              
-             [_delegate contentDidFinishLoad:result];
+             success(result);
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
              NSLog(@"Error = %@", error);
-             [_delegate contentDidFailLoad];
-         }];
+             failure(error);
+         }
+     ];
 }
 @end
