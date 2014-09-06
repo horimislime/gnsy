@@ -49,8 +49,8 @@
     [tabController selectTabAtIndex:index];
 }
 
-- (void)tabSelectionChanged:(GNSTabView *)tab {
-//    [scrollController ]
+- (void)tabSelectionChanged:(NSInteger)index {
+    [scrollController selectPageAtIndex:index];
 }
 
 

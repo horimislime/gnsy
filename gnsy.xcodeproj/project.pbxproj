@@ -221,27 +221,11 @@
 		86C50A3819B0BD980062E09B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				86EC77F619BA86B900E6CE23 /* Contents */,
+				86EC77F519BA86AD00E6CE23 /* Tabs */,
 				86C50A1519B0B0E40062E09B /* Main.storyboard */,
 				86C50A1819B0B0E40062E09B /* GNSViewController.h */,
 				86C50A1919B0B0E40062E09B /* GNSViewController.m */,
-				86C50A3F19B0C5B50062E09B /* GNSContentViewController.h */,
-				86C50A4019B0C5B50062E09B /* GNSContentViewController.m */,
-				86C50A4119B0C5B50062E09B /* GNSContentViewController.xib */,
-				86C50A4719B0E51C0062E09B /* GNSContentScrollViewController.h */,
-				86C50A4819B0E51C0062E09B /* GNSContentScrollViewController.m */,
-				86C50A4919B0E51C0062E09B /* GNSContentScrollViewController.xib */,
-				86C50A5F19B19B9A0062E09B /* GNSTableViewCell.h */,
-				86C50A6019B19B9A0062E09B /* GNSTableViewCell.m */,
-				86C50A6219B19C3F0062E09B /* GNSTableViewCell.xib */,
-				86C50A6419B1D6BA0062E09B /* GNSTabView.xib */,
-				86C50A6619B1D8760062E09B /* GNSTabView.h */,
-				86C50A6719B1D8760062E09B /* GNSTabView.m */,
-				86C50A6919B204890062E09B /* GNSTabScrollViewController.h */,
-				86C50A6A19B204890062E09B /* GNSTabScrollViewController.m */,
-				86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */,
-				86EC77F019B9B47700E6CE23 /* GNSWebViewController.h */,
-				86EC77F119B9B47700E6CE23 /* GNSWebViewController.m */,
-				86EC77F219B9B47700E6CE23 /* GNSWebViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,6 +250,38 @@
 				86EC77EB19B8888400E6CE23 /* GNSTabUtils.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		86EC77F519BA86AD00E6CE23 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				86C50A6419B1D6BA0062E09B /* GNSTabView.xib */,
+				86C50A6619B1D8760062E09B /* GNSTabView.h */,
+				86C50A6719B1D8760062E09B /* GNSTabView.m */,
+				86C50A6919B204890062E09B /* GNSTabScrollViewController.h */,
+				86C50A6A19B204890062E09B /* GNSTabScrollViewController.m */,
+				86C50A6B19B204890062E09B /* GNSTabScrollViewController.xib */,
+			);
+			name = Tabs;
+			sourceTree = "<group>";
+		};
+		86EC77F619BA86B900E6CE23 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				86C50A3F19B0C5B50062E09B /* GNSContentViewController.h */,
+				86C50A4019B0C5B50062E09B /* GNSContentViewController.m */,
+				86C50A4119B0C5B50062E09B /* GNSContentViewController.xib */,
+				86C50A4719B0E51C0062E09B /* GNSContentScrollViewController.h */,
+				86C50A4819B0E51C0062E09B /* GNSContentScrollViewController.m */,
+				86C50A4919B0E51C0062E09B /* GNSContentScrollViewController.xib */,
+				86C50A5F19B19B9A0062E09B /* GNSTableViewCell.h */,
+				86C50A6019B19B9A0062E09B /* GNSTableViewCell.m */,
+				86C50A6219B19C3F0062E09B /* GNSTableViewCell.xib */,
+				86EC77F019B9B47700E6CE23 /* GNSWebViewController.h */,
+				86EC77F119B9B47700E6CE23 /* GNSWebViewController.m */,
+				86EC77F219B9B47700E6CE23 /* GNSWebViewController.xib */,
+			);
+			name = Contents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

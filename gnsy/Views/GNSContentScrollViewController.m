@@ -60,6 +60,12 @@
     }
 }
 
+-(void)selectPageAtIndex:(NSInteger)index {
+    [UIView animateWithDuration:0.3f animations:^{
+        self.contentScrollView.contentOffset = CGPointMake(index * _contentWidth, 0);
+    }];
+}
+
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
     NSLog(@"");

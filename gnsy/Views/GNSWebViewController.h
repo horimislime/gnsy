@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GNSWebViewController : UIViewController
+@interface GNSWebViewController : UIViewController<UIWebViewDelegate>
 - (instancetype)initWithUrl:(NSString *)url;
 @end

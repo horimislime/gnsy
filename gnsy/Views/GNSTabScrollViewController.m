@@ -46,7 +46,7 @@ const static int TAB_HEIGHT=42;
         if(!self.tabScrollView.dragging && [event touchesForView:tab]){
             [self selectTabAtIndex:i];
             [self scrollToTab:tab];
-            [self.delegate tabSelectionChanged:_contentTabs[i]];
+            [self.delegate tabSelectionChanged:i];
         }
     }
 }

@@ -15,7 +15,6 @@
 @end
 
 @interface GNSContentScrollViewController : UIViewController<
-    GNSContentDelegate,
     UIScrollViewDelegate
 >
 
@@ -23,4 +22,5 @@
 
 - (instancetype)initController;
 - (void)setCategories:(NSArray *)categories;
+- (void)selectPageAtIndex:(NSInteger)index;
 @end
