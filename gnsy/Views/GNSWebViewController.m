@@ -8,6 +8,7 @@
 
 #import "GNSWebViewController.h"
 #import "SVProgressHUD.h"
+#import <Social/Social.h>
 
 @interface GNSWebViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
@@ -17,14 +18,14 @@
 
 @implementation GNSWebViewController {
     NSString *_url;
-    UINavigationController *_navigationController;
+    SLComposeViewController *_twitterComposeController;
+    SLComposeViewController *_facebookComposeController;
 }
 
 - (instancetype)initWithUrl:(NSString *)url {
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if(self) {
         _url = url;
-        _navigationController = (UINavigationController *)[[UIApplication sharedApplication] delegate].window.rootViewController;
     }
     return self;
 }
@@ -41,16 +42,43 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 }
+- (IBAction)twitterButtonTapped:(id)sender {
+    [self presentViewController:_twitterComposeController animated:YES completion:nil];
+}
 
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    if(!webView.loading) {
-        [SVProgressHUD dismiss];
-        self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    if(webView.loading) {
+        return;
+    }
+    
+    [SVProgressHUD dismiss];
+    
+    NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"location.href"];
+    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    
+    // twitter share
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        _twitterComposeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [_twitterComposeController setCompletionHandler:^(SLComposeViewControllerResult result) {
+            if (result == SLComposeViewControllerResultDone) {
+                //投稿成功時の処理
+            }
+        }];
+        
+        [_twitterComposeController addURL:[NSURL URLWithString:url]];
+        [_twitterComposeController setInitialText:title];
+    }
+    
+    // facebook share
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        _facebookComposeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [_facebookComposeController addURL:[NSURL URLWithString:url]];
+        [_facebookComposeController setInitialText:title];
     }
 }
 
 - (IBAction)backButtonTapped:(id)sender {
-    [_navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

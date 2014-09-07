@@ -30,6 +30,15 @@
                                 <action selector="backButtonTapped:" destination="-1" id="HTh-Hj-IQe"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem width="68" style="plain" systemItem="fixedSpace" id="arV-sM-aWk"/>
+                        <barButtonItem title="Item" id="JyY-mH-VXZ">
+                            <connections>
+                                <action selector="twitterButtonTapped:" destination="-1" id="7Zw-Sb-Rs4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="facebook.png" id="3dJ-nt-BDZ">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </subviews>
@@ -38,4 +47,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="facebook.png" width="128" height="128"/>
+    </resources>
 </document>
