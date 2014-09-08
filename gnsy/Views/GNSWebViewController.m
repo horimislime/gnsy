@@ -13,6 +13,7 @@
 @interface GNSWebViewController ()
 @property (strong, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *facebookButton;
 
 @end
 
@@ -32,6 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.facebookButton setBackgroundImage:[UIImage imageNamed:@"facebook"]
+                                   forState:UIControlStateNormal
+                                      style:UIBarButtonItemStylePlain
+                                 barMetrics:UIBarMetricsDefault];
     
     self.contentWebView.delegate = self;
     

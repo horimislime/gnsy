@@ -20,11 +20,10 @@
 @implementation GNSTabScrollViewController {
     NSMutableArray *_contentTabs;
     GNSTabView *_lastActiveTab;
+    CGFloat _currentContentOffset;
 }
 
 static NSArray *_colorHexCodes;
-const static int TAB_WIDTH=160;
-const static int TAB_HEIGHT=42;
 
 - (instancetype)initController {
     return [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
@@ -34,10 +33,11 @@ const static int TAB_HEIGHT=42;
     [super viewDidLoad];
     self.tabScrollView.delegate = self;
     _contentTabs = [[NSMutableArray alloc] initWithCapacity:0];
+    _currentContentOffset = 0;
     
-    _colorHexCodes=@[@"BF543B",
-                     @"CFEAF2",
-                     @"F0E3F8"];
+    _colorHexCodes = @[@"FA7054",
+                       @"0092BA",
+                       @"D97B37"];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -83,22 +83,25 @@ const static int TAB_HEIGHT=42;
 
 - (void)addTab:(GNSCategory *)category {
     UIColor *tabColor=[self getColorForIndex:_contentTabs.count];
-    CGRect newFrame = CGRectMake(_contentTabs.count * TAB_WIDTH, 0, TAB_WIDTH, TAB_HEIGHT);
+    
+    CGFloat tabWidth = [self calcurateTabWidth:category.categoryTitle];
+    CGRect newFrame = CGRectMake(_currentContentOffset, 0, tabWidth, CGRectGetHeight(self.view.frame));
     GNSTabView *tab =[[GNSTabView alloc] initWithCategory:category
                                                  tabColor:tabColor
                                                     frame:newFrame];
     [self.tabScrollView addSubview:tab];
+    _currentContentOffset += tabWidth;
 
     [_contentTabs addObject:tab];
     if(_contentTabs.count == 1) {
         [self selectTabAtIndex:0];
     }
     
-    [self.tabScrollView setContentSize:CGSizeMake(_contentTabs.count * TAB_WIDTH, TAB_HEIGHT)];
+    [self.tabScrollView setContentSize:CGSizeMake(_currentContentOffset, CGRectGetHeight(self.view.frame))];
 }
 
 - (float)calcurateTabWidth:(NSString *)labelText {
-    return 0.0f;
+    return (14 * labelText.length) + 10;
 }
 
 - (void)initTabForContents:(NSArray *)contents {

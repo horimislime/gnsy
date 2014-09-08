@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="backButton" destination="N84-nL-bPk" id="Zjo-Z2-Bze"/>
                 <outlet property="contentWebView" destination="jUU-Jr-lGd" id="ocL-88-aYb"/>
+                <outlet property="facebookButton" destination="3dJ-nt-BDZ" id="2zH-VN-q42"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,9 +37,7 @@
                                 <action selector="twitterButtonTapped:" destination="-1" id="7Zw-Sb-Rs4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem image="facebook.png" id="3dJ-nt-BDZ">
-                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
-                        </barButtonItem>
+                        <barButtonItem image="facebook.png" id="3dJ-nt-BDZ"/>
                     </items>
                 </toolbar>
             </subviews>
