@@ -9,6 +9,7 @@
 #import "GNSTabView.h"
 
 @interface GNSTabView ()
+
 @property (strong, nonatomic) IBOutlet UIView *tabBackgroundView;
 
 @end
@@ -47,15 +48,14 @@
 }
 
 - (void)setTabSelected:(BOOL)selected {
-    if(selected) {
+    if (selected) {
         self.tabBackgroundView.backgroundColor = self.tabColor;
         self.tabTitleLabel.textColor = [UIColor whiteColor];
         
         [UIView animateWithDuration:0.3 animations:^{
             self.tabBackgroundView.frame = _tabFrameWhenActive;
         }];
-    }
-    else {
+    } else {
         self.tabBackgroundView.backgroundColor = [UIColor whiteColor];
         self.tabTitleLabel.textColor = self.tabColor;
         
@@ -63,10 +63,6 @@
             self.tabBackgroundView.frame = _tabFrameWhenInactive;
         }];
     }
-    
-    
 }
-
-
 
 @end

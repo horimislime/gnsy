@@ -36,8 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.contentTableView.delegate=self;
-    self.contentTableView.dataSource=self;
+    self.contentTableView.delegate = self;
+    self.contentTableView.dataSource = self;
     
     [self.contentTableView registerNib:[UINib nibWithNibName:@"GNSTableViewCell" bundle:nil]
                 forCellReuseIdentifier:_category.categoryId];
@@ -59,7 +59,7 @@
     GNSNews *news = _contents[indexPath.row];
     GNSWebViewController *webViewController = [[GNSWebViewController alloc] initWithUrl:news.newsUrl];
     
-    UINavigationController *navigationController =(UINavigationController *)[[UIApplication sharedApplication] delegate].window.rootViewController;
+    UINavigationController *navigationController = (UINavigationController *)[[UIApplication sharedApplication] delegate].window.rootViewController;
     [navigationController pushViewController:webViewController animated:YES];
     
      [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -75,7 +75,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GNSTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:_category.categoryId];
+    GNSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_category.categoryId];
     GNSNews *news = _contents[indexPath.row];
     [cell loadContent:news category:_category];
     

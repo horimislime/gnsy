@@ -7,7 +7,7 @@
 //
 
 #import "GNSContentScrollViewController.h"
-# import "UIScrollView+TouchEvent.h"
+#import "UIScrollView+TouchEvent.h"
 
 @interface GNSContentScrollViewController ()
 @property(strong, nonatomic) IBOutlet UIScrollView *contentScrollView;
@@ -38,8 +38,7 @@
 }
 
 - (void)addPageView:(GNSCategory *)content {
-    GNSContentViewController *controller =
-    [[GNSContentViewController alloc] initWithContentInfo:content lazy:YES];
+    GNSContentViewController *controller = [[GNSContentViewController alloc] initWithContentInfo:content lazy:YES];
     
     CGRect rect = controller.view.frame;
     rect.origin.x = _contentWidth * _pageCount;
@@ -49,8 +48,7 @@
     [self.contentScrollView addSubview:controller.view];
     _pageCount++;
     
-    [self.contentScrollView
-     setContentSize:CGSizeMake(_contentWidth * _pageCount, _contentHeight)];
+    [self.contentScrollView setContentSize:CGSizeMake(_contentWidth * _pageCount, _contentHeight)];
 }
 
 - (void)setCategories:(NSArray *)categories {
@@ -67,14 +65,6 @@
 }
 
 #pragma mark - UIScrollViewDelegate
--(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    NSLog(@"");
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    NSLog(@"");
-}
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     CGFloat estimatedPageIndex=scrollView.contentOffset.x / _contentWidth;
     [self.delegate contentViewChanged:(NSInteger)roundf(estimatedPageIndex)];

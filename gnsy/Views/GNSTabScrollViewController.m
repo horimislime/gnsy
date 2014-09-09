@@ -41,9 +41,9 @@ static NSArray *_colorHexCodes;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    for(int i=0;i<_contentTabs.count;i++) {
+    for (int i = 0; i < _contentTabs.count; i++) {
         GNSTabView *tab = _contentTabs[i];
-        if(!self.tabScrollView.dragging && [event touchesForView:tab]){
+        if (!self.tabScrollView.dragging && [event touchesForView:tab]) {
             [self selectTabAtIndex:i];
             [self scrollToTab:tab];
             [self.delegate tabSelectionChanged:i];
@@ -52,7 +52,7 @@ static NSArray *_colorHexCodes;
 }
 
 - (UIColor *)getColorForIndex:(NSInteger)index {
-    if(index > (_colorHexCodes.count - 1)) {
+    if (index > (_colorHexCodes.count - 1)) {
         return [UIColor colorWithHex:_colorHexCodes[index % _colorHexCodes.count]];
     }
     else {
@@ -68,9 +68,9 @@ static NSArray *_colorHexCodes;
 - (void)scrollToTab:(GNSTabView *)tab {
     CGFloat tabCenterX = tab.frame.origin.x + CGRectGetWidth(tab.frame) / 2;
     CGFloat scrollToPositionX = tabCenterX - CGRectGetWidth(self.tabScrollView.frame) / 2;
-    CGFloat maxScrollableOffset =self.tabScrollView.contentSize.width-CGRectGetWidth([UIScreen mainScreen].bounds);
+    CGFloat maxScrollableOffset = self.tabScrollView.contentSize.width - CGRectGetWidth([UIScreen mainScreen].bounds);
     
-    if(scrollToPositionX < 0) {
+    if (scrollToPositionX < 0) {
         scrollToPositionX = 0;
     }
     else if (scrollToPositionX > maxScrollableOffset) {
@@ -82,13 +82,13 @@ static NSArray *_colorHexCodes;
 }
 
 - (void)addTab:(GNSCategory *)category {
-    UIColor *tabColor=[self getColorForIndex:_contentTabs.count];
+    UIColor *tabColor = [self getColorForIndex:_contentTabs.count];
     
     CGFloat tabWidth = [self calcurateTabWidth:category.categoryTitle];
     CGRect newFrame = CGRectMake(_currentContentOffset, 0, tabWidth, CGRectGetHeight(self.view.frame));
-    GNSTabView *tab =[[GNSTabView alloc] initWithCategory:category
-                                                 tabColor:tabColor
-                                                    frame:newFrame];
+    GNSTabView *tab = [[GNSTabView alloc] initWithCategory:category
+                                                  tabColor:tabColor
+                                                     frame:newFrame];
     [self.tabScrollView addSubview:tab];
     _currentContentOffset += tabWidth;
 
@@ -105,14 +105,14 @@ static NSArray *_colorHexCodes;
 }
 
 - (void)initTabForContents:(NSArray *)contents {
-    for(GNSCategory *category in contents) {
+    for (GNSCategory *category in contents) {
         [self addTab:category];
     }
 }
 
 - (void)selectTabAtIndex:(NSInteger)index {
     GNSTabView *selectedTab = _contentTabs[index];
-    if(selectedTab == _lastActiveTab) {
+    if (selectedTab == _lastActiveTab) {
         return;
     }
     
